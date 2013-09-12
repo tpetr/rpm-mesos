@@ -40,6 +40,7 @@ Hypertable, Spark, and other applications on a dynamically shared pool of nodes.
 
 %setup -n %{name}-%{version}
 %build
+./bootstrap
 LIBS="-lsnappy" ./configure --prefix=%{_prefix} --libdir=%{_libdir}
 %{__make} %{?_smp_mflags}
 
