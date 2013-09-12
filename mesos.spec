@@ -16,8 +16,8 @@
 # QA_RPATHS=$[ 0x0002|0x0001 ] rpmbuild -bb ~/rpmbuild/SPECS/mesos.spec
 
 Name:      mesos
-Version:   0.14.0-rc3
-Release:   1
+Version:   0.14.0
+Release:   rc3
 Summary:   Apache Mesos Cluster Manager
 License:   Apache 2.0
 URL:       http://mesos.apache.org/
@@ -36,9 +36,10 @@ sharing across distributed applications, or frameworks. It can run Hadoop, MPI,
 Hypertable, Spark, and other applications on a dynamically shared pool of nodes.
 
 %prep
-%setup -n %{name}-%{version}
 cd ./SOURCES
 tar -xvf 0.14.0-rc3.tar.gz
+
+%setup -n %{name}-%{version}-%{release}
 
 %build
 ./bootstrap
