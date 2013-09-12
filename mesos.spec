@@ -15,9 +15,6 @@
 #
 # QA_RPATHS=$[ 0x0002|0x0001 ] rpmbuild -bb ~/rpmbuild/SPECS/mesos.spec
 
-%define mesos_etc    %{_sysconfdir}/%{name}
-%define mesos_config %{mesos_etc}/conf
-
 Name:      mesos
 Version:   0.14.0
 Release:   rc3
@@ -38,7 +35,11 @@ Apache Mesos is a cluster manager that provides efficient resource isolation and
 sharing across distributed applications, or frameworks. It can run Hadoop, MPI,
 Hypertable, Spark, and other applications on a dynamically shared pool of nodes.
 
+%prep
 %setup -n %{name}-%{version}
+cd ./SOURCES
+tar -xvf 0.14.0-rc3.tar.gz
+
 %build
 ./bootstrap
 LIBS="-lsnappy" ./configure --prefix=%{_prefix} --libdir=%{_libdir}
