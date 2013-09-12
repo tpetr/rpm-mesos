@@ -16,8 +16,8 @@
 # QA_RPATHS=$[ 0x0002|0x0001 ] rpmbuild -bb ~/rpmbuild/SPECS/mesos.spec
 
 Name:      mesos
-Version:   0.14.0
-Release:   rc3
+Version:   0.14.0-rc3
+Release:   1
 Summary:   Apache Mesos Cluster Manager
 License:   Apache 2.0
 URL:       http://mesos.apache.org/
