@@ -19,6 +19,7 @@ Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 Packager:  Tom Petr <tpetr@hubspot.com>
 BuildRequires: automake
 BuildRequires: autoconf
+Requires(pre): libsnappy
 AutoReq: no
 
 %description
