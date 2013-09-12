@@ -17,8 +17,6 @@
 
 %define mesos_etc    %{_sysconfdir}/%{name}
 %define mesos_config %{mesos_etc}/conf
-%define mesos_user   mesos
-%define mesos_group  mesos
 
 Name:      mesos
 Version:   0.14.0
@@ -31,8 +29,6 @@ Source0:   https://github.com/apache/mesos/archive/0.14.0-rc3.tar.gz
 Source1:   mesos
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 Packager:  Tom Petr <tpetr@hubspot.com>
-BuildRequires: python26-devel
-BuildRequires: curl-devel
 BuildRequires: automake
 BuildRequires: autoconf
 AutoReq: no
@@ -42,8 +38,6 @@ Apache Mesos is a cluster manager that provides efficient resource isolation and
 sharing across distributed applications, or frameworks. It can run Hadoop, MPI,
 Hypertable, Spark, and other applications on a dynamically shared pool of nodes.
 
-%prep
-
 %setup -n %{name}-%{version}
 %build
 LIBS="-lsnappy" ./configure --prefix=%{_prefix} --libdir=%{_libdir}
@@ -52,10 +46,6 @@ LIBS="-lsnappy" ./configure --prefix=%{_prefix} --libdir=%{_libdir}
 %install
 rm -rf %{buildroot}
 make install DESTDIR="%{buildroot}"
-
-install -d -m 755 %{buildroot}/%{_initrddir}
-install    -m 755 %_sourcedir/mesos-master       %{buildroot}/%{_initrddir}/mesos-master
-install    -m 755 %_sourcedir/mesos-slave        %{buildroot}/%{_initrddir}/mesos-slave
 
 rm -rf %{buildroot}/usr/var/mesos*
 
