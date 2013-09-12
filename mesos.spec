@@ -36,9 +36,6 @@ sharing across distributed applications, or frameworks. It can run Hadoop, MPI,
 Hypertable, Spark, and other applications on a dynamically shared pool of nodes.
 
 %prep
-cd ./SOURCES
-tar -xvf 0.14.0-rc3.tar.gz
-
 %setup -n %{name}-%{version}-%{release}
 
 %build
